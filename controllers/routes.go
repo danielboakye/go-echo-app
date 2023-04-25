@@ -4,6 +4,7 @@ import (
 	"github.com/danielboakye/go-echo-app/data"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
+	"github.com/labstack/gommon/log"
 )
 
 type Config struct {
@@ -13,6 +14,8 @@ type Config struct {
 func (app *Config) NewServer() *echo.Echo {
 
 	e := echo.New()
+
+	e.Logger.SetLevel(log.INFO)
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
